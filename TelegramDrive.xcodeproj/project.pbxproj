@@ -1,0 +1,307 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		TD000101 /* TelegramDriveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = TD000201 /* TelegramDriveApp.swift */; };
+		TD000102 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = TD000202 /* AppState.swift */; };
+		TD000103 /* CoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = TD000203 /* CoreModels.swift */; };
+		TD000104 /* TDNative.swift in Sources */ = {isa = PBXBuildFile; fileRef = TD000204 /* TDNative.swift */; };
+		TD000105 /* TDCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = TD000205 /* TDCore.swift */; };
+		TD000106 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = TD000206 /* Theme.swift */; };
+		TD000107 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = TD000207 /* AuthView.swift */; };
+		TD000108 /* DriveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = TD000208 /* DriveView.swift */; };
+		TD000109 /* FileGridCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = TD000209 /* FileGridCard.swift */; };
+		TD000110 /* FileListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = TD000210 /* FileListRow.swift */; };
+		TD000111 /* FileDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = TD000211 /* FileDetailSheet.swift */; };
+		TD000112 /* TransfersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = TD000212 /* TransfersView.swift */; };
+		TD000113 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = TD000213 /* SettingsView.swift */; };
+		TD000114 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = TD000214 /* MainTabView.swift */; };
+		TD000115 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = TD000215 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		TD000001 /* TelegramDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TelegramDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		TD000201 /* TelegramDriveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/App/TelegramDriveApp.swift"; sourceTree = "<group>"; };
+		TD000202 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/App/AppState.swift"; sourceTree = "<group>"; };
+		TD000203 /* CoreModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Core/CoreModels.swift"; sourceTree = "<group>"; };
+		TD000204 /* TDNative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Core/TDNative.swift"; sourceTree = "<group>"; };
+		TD000205 /* TDCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Core/TDCore.swift"; sourceTree = "<group>"; };
+		TD000206 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Views/Common/Theme.swift"; sourceTree = "<group>"; };
+		TD000207 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Views/Auth/AuthView.swift"; sourceTree = "<group>"; };
+		TD000208 /* DriveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Views/Drive/DriveView.swift"; sourceTree = "<group>"; };
+		TD000209 /* FileGridCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Views/Drive/FileGridCard.swift"; sourceTree = "<group>"; };
+		TD000210 /* FileListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Views/Drive/FileListRow.swift"; sourceTree = "<group>"; };
+		TD000211 /* FileDetailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Views/Drive/FileDetailSheet.swift"; sourceTree = "<group>"; };
+		TD000212 /* TransfersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Views/Transfers/TransfersView.swift"; sourceTree = "<group>"; };
+		TD000213 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Views/Settings/SettingsView.swift"; sourceTree = "<group>"; };
+		TD000214 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Views/MainTabView.swift"; sourceTree = "<group>"; };
+		TD000215 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "TelegramDrive/Resources/Assets.xcassets"; sourceTree = "<group>"; };
+		TD000216 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TelegramDrive/Resources/Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		TD000301 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		TD000401 = {
+			isa = PBXGroup;
+			children = (
+				TD000402 /* TelegramDrive */,
+				TD000403 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		TD000402 /* TelegramDrive */ = {
+			isa = PBXGroup;
+			children = (
+				TD000201 /* TelegramDriveApp.swift */,
+				TD000202 /* AppState.swift */,
+				TD000203 /* CoreModels.swift */,
+				TD000204 /* TDNative.swift */,
+				TD000205 /* TDCore.swift */,
+				TD000206 /* Theme.swift */,
+				TD000207 /* AuthView.swift */,
+				TD000208 /* DriveView.swift */,
+				TD000209 /* FileGridCard.swift */,
+				TD000210 /* FileListRow.swift */,
+				TD000211 /* FileDetailSheet.swift */,
+				TD000212 /* TransfersView.swift */,
+				TD000213 /* SettingsView.swift */,
+				TD000214 /* MainTabView.swift */,
+				TD000215 /* Assets.xcassets */,
+				TD000216 /* Info.plist */,
+			);
+			path = TelegramDrive;
+			sourceTree = "<group>";
+		};
+		TD000403 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				TD000001 /* TelegramDrive.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		TD000501 /* TelegramDrive */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = TD000601 /* Build configuration list for PBXNativeTarget "TelegramDrive" */;
+			buildPhases = (
+				TD000701 /* Sources */,
+				TD000301 /* Frameworks */,
+				TD000801 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TelegramDrive;
+			productName = TelegramDrive;
+			productReference = TD000001 /* TelegramDrive.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		TD000000 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					TD000501 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = TD000901 /* Build configuration list for PBXProject "TelegramDrive" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = TD000401;
+			productRefGroup = TD000403 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				TD000501 /* TelegramDrive */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		TD000801 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				TD000115 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		TD000701 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				TD000101 /* TelegramDriveApp.swift in Sources */,
+				TD000102 /* AppState.swift in Sources */,
+				TD000103 /* CoreModels.swift in Sources */,
+				TD000104 /* TDNative.swift in Sources */,
+				TD000105 /* TDCore.swift in Sources */,
+				TD000106 /* Theme.swift in Sources */,
+				TD000107 /* AuthView.swift in Sources */,
+				TD000108 /* DriveView.swift in Sources */,
+				TD000109 /* FileGridCard.swift in Sources */,
+				TD000110 /* FileListRow.swift in Sources */,
+				TD000111 /* FileDetailSheet.swift in Sources */,
+				TD000112 /* TransfersView.swift in Sources */,
+				TD000113 /* SettingsView.swift in Sources */,
+				TD000114 /* MainTabView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		TD001001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		TD001002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		TD001003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = TelegramDrive/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.8.8;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cameronamer.telegramdrive;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		TD001004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = TelegramDrive/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.8.8;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cameronamer.telegramdrive;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		TD000601 /* Build configuration list for PBXNativeTarget "TelegramDrive" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				TD001003 /* Debug */,
+				TD001004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		TD000901 /* Build configuration list for PBXProject "TelegramDrive" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				TD001001 /* Debug */,
+				TD001002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = TD000000 /* Project object */;
+}
