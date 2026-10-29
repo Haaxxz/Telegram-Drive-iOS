@@ -63,7 +63,12 @@ public final class TDNative {
                   (200...299).contains(httpResponse.statusCode) else {
                 let status = (response as? HTTPURLResponse)?.statusCode ?? -1
                 let body = String(data: data, encoding: .utf8) ?? ""
-                result = "{\"error\":\"http_\(status)\",\"detail\":\"\(body.isEmpty ? \"no body\" : body)\"}"
+                let payload: [String: String] = [
+                    "error": "http_\(status)",
+                    "detail": body.isEmpty ? "no body" : body
+                ]
+                let jsonData = try? JSONSerialization.data(withJSONObject: payload, options: [])
+                result = String(data: jsonData ?? Data(), encoding: .utf8) ?? "{\"error\":\"http_\(status)\"}"
                 return
             }
 
