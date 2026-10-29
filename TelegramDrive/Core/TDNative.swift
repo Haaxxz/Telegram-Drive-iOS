@@ -23,8 +23,6 @@ public final class TDNative {
     /// Direct entry point into td_core C-ABI:
     /// `const char* td_core_call(const char* operation, const char* arguments_json);`
     public func call(operation: String, argumentsJson: String) -> String {
-        // Route through the configured backend when one is set; otherwise return
-        // the offline fallback so previews and tests still behave deterministically.
         guard let baseUrl = apiBaseUrl else {
             return fallbackDispatcher(operation: operation, argumentsJson: argumentsJson)
         }
@@ -45,23 +43,41 @@ public final class TDNative {
         request.httpBody = httpBody
         request.timeoutInterval = 30
 
-        do {
-            let (data, response) = try session.data(for: request)
+        let semaphore = DispatchSemaphore(value: 0)
+        var result = "{\"error\":\"network\",\"detail\":\"request not completed\"}"
+
+        let task = session.dataTask(with: request) { data, response, error in
+            defer { semaphore.signal() }
+
+            if let error {
+                result = "{\"error\":\"network\",\"detail\":\"\(error.localizedDescription)\"}"
+                return
+            }
+
+            guard let data, let response else {
+                result = "{\"error\":\"network\",\"detail\":\"empty response\"}"
+                return
+            }
+
             guard let httpResponse = response as? HTTPURLResponse,
                   (200...299).contains(httpResponse.statusCode) else {
                 let status = (response as? HTTPURLResponse)?.statusCode ?? -1
                 let body = String(data: data, encoding: .utf8) ?? ""
-                return "{\"error\":\"http_\(status)\",\"detail\":\"\(body.isEmpty ? "no body" : body)\"}"
+                result = "{\"error\":\"http_\(status)\",\"detail\":\"\(body.isEmpty ? \"no body\" : body)\"}"
+                return
             }
+
             guard let text = String(data: data, encoding: .utf8) else {
-                return "{\"error\":\"bad_encoding\"}"
+                result = "{\"error\":\"bad_encoding\"}"
+                return
             }
-            // Pass the backend envelope straight through so TDCore can inspect
-            // for "error" and throw.
-            return text
-        } catch {
-            return "{\"error\":\"network\",\"detail\":\"\(error.localizedDescription)\"}"
+
+            result = text
         }
+
+        task.resume()
+        _ = semaphore.wait(timeout: .now() + 30)
+        return result
     }
 
     // MARK: - Offline fallback (previews / tests / no backend configured)
@@ -72,10 +88,6 @@ public final class TDNative {
         case "set_credentials":
             return "{\"status\":\"ok\"}"
         case "request_code":
-            // In the fallback path we cannot actually contact Telegram. Returning
-            // the envelope shape a real bridge would send lets the UI animate to
-            // the OTP screen; the user enters the code they receive and the verify
-            // step calls `sign_in`, which the fallback also serves.
             return "{\"status\":\"ok\",\"type\":\"app_code\"}"
         case "sign_in":
             return "{\"status\":\"ok\",\"user\":{\"id\":10482910,\"first_name\":\"Telegram User\"}}"
