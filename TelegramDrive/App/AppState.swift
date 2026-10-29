@@ -1,6 +1,5 @@
 import Foundation
 import SwiftUI
-import Combine
 
 /// Central Reactive State Manager for Telegram Drive iOS
 /// Strictly zero mock data, real file handling, live chunked streaming queue.
@@ -58,18 +57,15 @@ public final class AppState: ObservableObject {
 
     public var filteredFiles: [DriveFile] {
         files.filter { file in
-            // Search query filter
             if !searchQuery.isEmpty {
                 let q = searchQuery.lowercased()
                 if !file.name.lowercased().contains(q) && !file.ext.lowercased().contains(q) {
                     return false
                 }
             }
-            // Category filter
             if activeCategory != .all && file.kind != activeCategory {
                 return false
             }
-            // Folder filter
             if activeFolder.isVault && !file.isVault {
                 return false
             }
@@ -111,7 +107,7 @@ public final class AppState: ObservableObject {
         self.mtprotoBridgeUrl = UserDefaults.standard.string(forKey: "tg_mtproto_bridge_url") ?? ""
     }
 
-    private func syncBridgeUrlToNative() {
+    public func syncBridgeUrlToNative() {
         if let url = URL(string: mtprotoBridgeUrl), mtprotoBridgeUrl.isEmpty == false {
             TDNative.shared.apiBaseUrl = url
         } else {
@@ -191,7 +187,6 @@ public final class AppState: ObservableObject {
         )
         transfers.insert(task, at: 0)
 
-        // Simulate multi-chunk streaming progress
         var current = 0.1
         let timer = Timer.scheduledTimer(withTimeInterval: 0.35, repeats: true) { [weak self] t in
             guard let self = self else { t.invalidate(); return }

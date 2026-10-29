@@ -43,11 +43,13 @@ public final class TDNative {
         request.httpBody = httpBody
         request.timeoutInterval = 30
 
-        let semaphore = DispatchSemaphore(value: 0)
+        let semaphore = DispatchGroup()
+        semaphore.enter()
+
         var result = "{\"error\":\"network\",\"detail\":\"request not completed\"}"
 
         let task = session.dataTask(with: request) { data, response, error in
-            defer { semaphore.signal() }
+            defer { semaphore.leave() }
 
             if let error {
                 result = "{\"error\":\"network\",\"detail\":\"\(error.localizedDescription)\"}"
@@ -63,7 +65,16 @@ public final class TDNative {
                   (200...299).contains(httpResponse.statusCode) else {
                 let status = (response as? HTTPURLResponse)?.statusCode ?? -1
                 let body = String(data: data, encoding: .utf8) ?? ""
-                result = "{\"error\":\"http_\(status)\",\"detail\":\"\(body.isEmpty ? \"no body\" : body)\"}"
+                let payload: [String: String] = [
+                    "error": "http_\(status)",
+                    "detail": body.isEmpty ? "no body" : body
+                ]
+                if let jsonData = try? JSONSerialization.data(withJSONObject: payload, options: []),
+                   let jsonText = String(data: jsonData, encoding: .utf8) {
+                    result = jsonText
+                } else {
+                    result = "{\"error\":\"http_\(status)\"}"
+                }
                 return
             }
 
@@ -76,7 +87,7 @@ public final class TDNative {
         }
 
         task.resume()
-        _ = semaphore.wait(timeout: .now() + 30)
+        semaphore.wait()
         return result
     }
 
