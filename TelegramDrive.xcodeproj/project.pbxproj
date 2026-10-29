@@ -26,22 +26,22 @@
 
 /* Begin PBXFileReference section */
 		TD000001 /* TelegramDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TelegramDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		TD000201 /* TelegramDriveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/App/TelegramDriveApp.swift"; sourceTree = "<group>"; };
-		TD000202 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/App/AppState.swift"; sourceTree = "<group>"; };
-		TD000203 /* CoreModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Core/CoreModels.swift"; sourceTree = "<group>"; };
-		TD000204 /* TDNative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Core/TDNative.swift"; sourceTree = "<group>"; };
-		TD000205 /* TDCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Core/TDCore.swift"; sourceTree = "<group>"; };
-		TD000206 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Views/Common/Theme.swift"; sourceTree = "<group>"; };
-		TD000207 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Views/Auth/AuthView.swift"; sourceTree = "<group>"; };
-		TD000208 /* DriveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Views/Drive/DriveView.swift"; sourceTree = "<group>"; };
-		TD000209 /* FileGridCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Views/Drive/FileGridCard.swift"; sourceTree = "<group>"; };
-		TD000210 /* FileListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Views/Drive/FileListRow.swift"; sourceTree = "<group>"; };
-		TD000211 /* FileDetailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Views/Drive/FileDetailSheet.swift"; sourceTree = "<group>"; };
-		TD000212 /* TransfersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Views/Transfers/TransfersView.swift"; sourceTree = "<group>"; };
-		TD000213 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Views/Settings/SettingsView.swift"; sourceTree = "<group>"; };
-		TD000214 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TelegramDrive/Views/MainTabView.swift"; sourceTree = "<group>"; };
-		TD000215 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "TelegramDrive/Resources/Assets.xcassets"; sourceTree = "<group>"; };
-		TD000216 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TelegramDrive/Resources/Info.plist"; sourceTree = "<group>"; };
+		TD000201 /* TelegramDriveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App/TelegramDriveApp.swift"; sourceTree = "<group>"; };
+		TD000202 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App/AppState.swift"; sourceTree = "<group>"; };
+		TD000203 /* CoreModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/CoreModels.swift"; sourceTree = "<group>"; };
+		TD000204 /* TDNative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/TDNative.swift"; sourceTree = "<group>"; };
+		TD000205 /* TDCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/TDCore.swift"; sourceTree = "<group>"; };
+		TD000206 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Common/Theme.swift"; sourceTree = "<group>"; };
+		TD000207 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Auth/AuthView.swift"; sourceTree = "<group>"; };
+		TD000208 /* DriveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Drive/DriveView.swift"; sourceTree = "<group>"; };
+		TD000209 /* FileGridCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Drive/FileGridCard.swift"; sourceTree = "<group>"; };
+		TD000210 /* FileListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Drive/FileListRow.swift"; sourceTree = "<group>"; };
+		TD000211 /* FileDetailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Drive/FileDetailSheet.swift"; sourceTree = "<group>"; };
+		TD000212 /* TransfersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Transfers/TransfersView.swift"; sourceTree = "<group>"; };
+		TD000213 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Settings/SettingsView.swift"; sourceTree = "<group>"; };
+		TD000214 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/MainTabView.swift"; sourceTree = "<group>"; };
+		TD000215 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Resources/Assets.xcassets"; sourceTree = "<group>"; };
+		TD000216 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Resources/Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
