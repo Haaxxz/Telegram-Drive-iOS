@@ -1,5 +1,5 @@
 import Foundation
-import SwiftUI
+import Combine
 
 /// Central Reactive State Manager for Telegram Drive iOS
 /// Strictly zero mock data, real file handling, live chunked streaming queue.
