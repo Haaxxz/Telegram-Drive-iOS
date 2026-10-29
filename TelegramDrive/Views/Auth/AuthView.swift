@@ -275,8 +275,28 @@ public struct AuthView: View {
 
             Button(action: {
                 let fullPhone = "\(countryCode) \(phoneInput.isEmpty ? "5550192834" : phoneInput)"
-                state.showToast("Login code sent to \(fullPhone)")
-                withAnimation { currentStep = 3 }
+                state.showToast("Requesting code for \(fullPhone)…")
+                Task {
+                    do {
+                        // 1) Register API credentials with the core engine
+                        if !state.credentials.apiId.isEmpty && !state.credentials.apiHash.isEmpty {
+                            try TDCore.shared.setCredentials(
+                                apiId: Int(state.credentials.apiId) ?? 0,
+                                apiHash: state.credentials.apiHash
+                            )
+                        }
+                        // 2) Request the login code / OTP from Telegram
+                        let _ = try TDCore.shared.requestCode(phoneNumber: fullPhone)
+                        await MainActor.run {
+                            state.showToast("Code sent to \(fullPhone)")
+                            withAnimation { currentStep = 3 }
+                        }
+                    } catch {
+                        await MainActor.run {
+                            state.showToast("Code request failed: \(error.localizedDescription)")
+                        }
+                    }
+                }
             }) {
                 HStack {
                     Text("Request Telegram Code")
@@ -344,7 +364,24 @@ public struct AuthView: View {
 
             Button(action: {
                 let phone = "\(countryCode) \(phoneInput.isEmpty ? "5550192834" : phoneInput)"
-                state.completeSignIn(phoneNumber: phone)
+                let otp = otpCode.joined()
+                guard !otp.isEmpty else {
+                    state.showToast("Enter the 5-digit code first")
+                    return
+                }
+                state.showToast("Verifying code…")
+                Task {
+                    do {
+                        let _ = try TDCore.shared.signIn(code: otp)
+                        await MainActor.run {
+                            state.completeSignIn(phoneNumber: phone)
+                        }
+                    } catch {
+                        await MainActor.run {
+                            state.showToast("Verification failed: \(error.localizedDescription)")
+                        }
+                    }
+                }
             }) {
                 HStack {
                     Text("Verify & Open Drive")

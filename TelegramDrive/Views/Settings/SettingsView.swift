@@ -169,6 +169,87 @@ public struct SettingsView: View {
                 }
                 .padding(.horizontal)
 
+                // MTProto bridge URL
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("MTProto Bridge (Backend)")
+                        .font(.system(size: 11, weight: .bold))
+                        .foregroundColor(colors.textDim)
+                        .textCase(.uppercase)
+
+                    VStack(spacing: 0) {
+                        HStack {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(state.mtprotoBridgeUrl.isEmpty ? colors.accentRose.opacity(0.15) : colors.accentEmerald.opacity(0.15))
+                                    .frame(width: 32, height: 32)
+                                Image(systemName: state.mtprotoBridgeUrl.isEmpty ? "wifi.slash" : "server.rack")
+                                    .font(.system(size: 14))
+                                    .foregroundColor(state.mtprotoBridgeUrl.isEmpty ? colors.accentRose : colors.accentEmerald)
+                            }
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Bridge Endpoint")
+                                    .font(.system(size: 13, weight: .semibold))
+                                    .foregroundColor(colors.textPrimary)
+                                Text(state.mtprotoBridgeUrl.isEmpty ? "Not configured — login falls back to offline demo" : state.mtprotoBridgeUrl)
+                                    .font(.system(size: 11))
+                                    .foregroundColor(colors.textSecondary)
+                                    .lineLimit(2)
+                            }
+                            Spacer()
+                        }
+                        .padding(12)
+
+                        Divider().background(colors.border)
+
+                        HStack {
+                            TextField("https://…/mtproto", text: $state.mtprotoBridgeUrl)
+                                .autocapitalization(.none)
+                                .disableAutocorrection(true)
+                                .font(.system(size: 12))
+                                .padding(10)
+                                .background(colors.background)
+                                .cornerRadius(8)
+                                .foregroundColor(colors.textPrimary)
+                                .multilineTextAlignment(.leading)
+                            Spacer()
+                        }
+
+                        HStack(spacing: 10) {
+                            Button(action: {
+                                state.syncBridgeUrlToNative()
+                                UserDefaults.standard.set(state.mtprotoBridgeUrl, forKey: "tg_mtproto_bridge_url")
+                                state.showToast("Bridge URL saved")
+                            }) {
+                                Text("Save & Use")
+                                    .font(.system(size: 12, weight: .bold))
+                                    .foregroundColor(.white)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 8)
+                                    .background(colors.accentCyan)
+                                    .cornerRadius(8)
+                            }
+                            Button(action: {
+                                state.mtprotoBridgeUrl = ""
+                                state.syncBridgeUrlToNative()
+                                UserDefaults.standard.removeObject(forKey: "tg_mtproto_bridge_url")
+                                state.showToast("Bridge URL cleared — offline fallback")
+                            }) {
+                                Text("Clear")
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(colors.accentRose)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 8)
+                                    .background(colors.accentRose.opacity(0.12))
+                                    .cornerRadius(8)
+                            }
+                        }
+                    }
+                    .background(colors.surface)
+                    .cornerRadius(14)
+                    .overlay(RoundedRectangle(cornerRadius: 14).stroke(colors.border, lineWidth: 1))
+                }
+                .padding(.horizontal)
+
                 // Disconnect Session Button (if signed in)
                 if state.signedIn {
                     Button(action: {

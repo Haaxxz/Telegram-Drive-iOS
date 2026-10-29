@@ -33,11 +33,18 @@ public final class AppState: ObservableObject {
     @Published public var biometricsEnabled: Bool = false
     @Published public var toastMessage: String? = nil
 
+    /// Optional MTProto bridge URL. When set, TDNative routes every `call` through
+    /// this backend instead of the offline fallback. Configure from Settings or your
+    /// environment before login so OTPs actually route to Telegram.
+    @Published public var mtprotoBridgeUrl: String = ""
+
     private var cancellables = Set<AnyCancellable>()
 
     public init() {
         self.activeFolder = DriveFolder(id: "saved", name: "Saved Messages", isVault: false, icon: "bookmark.fill")
         loadStoredCredentials()
+        loadBridgeUrl()
+        syncBridgeUrlToNative()
     }
 
     // MARK: - Computed Properties
@@ -100,6 +107,18 @@ public final class AppState: ObservableObject {
         self.credentials = AppCredentials(apiId: apiId, apiHash: apiHash)
     }
 
+    private func loadBridgeUrl() {
+        self.mtprotoBridgeUrl = UserDefaults.standard.string(forKey: "tg_mtproto_bridge_url") ?? ""
+    }
+
+    private func syncBridgeUrlToNative() {
+        if let url = URL(string: mtprotoBridgeUrl), mtprotoBridgeUrl.isEmpty == false {
+            TDNative.shared.apiBaseUrl = url
+        } else {
+            TDNative.shared.apiBaseUrl = nil
+        }
+    }
+
     public func completeSignIn(phoneNumber: String) {
         self.credentials.phone = phoneNumber
         self.signedIn = true
@@ -113,7 +132,10 @@ public final class AppState: ObservableObject {
         self.selectedFileIds.removeAll()
         UserDefaults.standard.removeObject(forKey: "tg_api_id")
         UserDefaults.standard.removeObject(forKey: "tg_api_hash")
+        UserDefaults.standard.removeObject(forKey: "tg_mtproto_bridge_url")
         self.credentials = AppCredentials()
+        self.mtprotoBridgeUrl = ""
+        syncBridgeUrlToNative()
         showToast("Disconnected Telegram session")
     }
 
