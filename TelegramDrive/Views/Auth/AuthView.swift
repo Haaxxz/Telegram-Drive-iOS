@@ -275,6 +275,12 @@ public struct AuthView: View {
 
             Button(action: {
                 let fullPhone = "\(countryCode) \(phoneInput.isEmpty ? "5550192834" : phoneInput)"
+                // If no MTProto bridge URL is configured, we cannot reach Telegram's servers.
+                // Prompt the user to configure a bridge URL via Settings, or switch to QR login.
+                if state.mtprotoBridgeUrl.isEmpty {
+                    state.showToast("Configure MTProto bridge URL in Settings first, or use QR login")
+                    return
+                }
                 state.showToast("Requesting code for \(fullPhone)…")
                 Task {
                     do {
@@ -369,6 +375,11 @@ public struct AuthView: View {
                     state.showToast("Enter the 5-digit code first")
                     return
                 }
+                // If no MTProto bridge URL is configured, we cannot reach Telegram's servers.
+                if state.mtprotoBridgeUrl.isEmpty {
+                    state.showToast("Configure MTProto bridge URL in Settings first")
+                    return
+                }
                 state.showToast("Verifying code…")
                 Task {
                     do {
@@ -430,6 +441,10 @@ public struct AuthView: View {
             .padding(.vertical, 8)
 
             Button(action: {
+                if state.mtprotoBridgeUrl.isEmpty {
+                    state.showToast("Configure MTProto bridge URL in Settings first")
+                    return
+                }
                 state.completeSignIn(phoneNumber: "+1 555-019-2834")
             }) {
                 Text("Simulate Scan Approved")
